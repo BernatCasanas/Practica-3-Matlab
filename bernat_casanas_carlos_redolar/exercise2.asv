@@ -170,14 +170,26 @@ function Calculate_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 x0 = str2double(get(handles.Edit_x_0, 'String'));
 y0 = str2double(get(handles.Edit_y_0, 'String'));
-v0 = get(handles.Velocity_Slider, 'Value');
-a0 = get(handles.Angle_Slider, 'Value');
+v0 = str2double(get(handles.Velocity_Slider, 'String'));
+a0 = str2double(get(handles.Angle_Slider, 'String'));
 g = -9.81;
 
 x_max = (v0*v0*sind(2*a0))/g;
-y_max = (v0*v0*sin(a0)*sin(a0))/(2*g);
+y_max = (v0*v0*sin(a0)*sin(a0))
 
 
-set(handles.range,'String',num2str(x_max));
-set(handles.height,'String',num2str(y_max));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
