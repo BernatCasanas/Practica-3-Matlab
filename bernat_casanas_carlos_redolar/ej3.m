@@ -261,38 +261,36 @@ v_quaternion = [0;v];
 %q*v
 q = u_quaternion;
 p = v_quaternion;
-qvec = q(2:4, 1);
-pvec = p(2:4, 1);
-qp0 = q(1, 1) * p(1, 1) - (transpose(qvec) * pvec);
-qpvec = (q(1, 1) * pvec) + (p(1, 1) * qvec) + (cross(qvec, pvec));
-qp = [qp0; qpvec(1:3, 1)];
+q_vec = q(2:4, 1);
+p_vec = p(2:4, 1);
+qp_0 = q(1, 1) * p(1, 1) - (transpose(q_vec) * p_vec);
+qp_vec = (q(1, 1) * p_vec) + (p(1, 1) * q_vec) + (cross(q_vec, p_vec));
+qp = [qp_0; qp_vec(1:3, 1)];
 
-%q*v*q_conj
+%q * v * conj q
 q = qp;
 p = conj_quaternion;
-qvec = q(2:4, 1);
-pvec = p(2:4, 1);
-qp0 = q(1, 1) * p(1, 1) - (transpose(qvec) * pvec);
-qpvec = (q(1, 1) * pvec) + (p(1, 1) * qvec) + (cross(qvec, pvec));
+q_vec = q(2:4, 1);
+p_vec = p(2:4, 1);
+qp_0 = q(1, 1) * p(1, 1) - (transpose(q_vec) * p_vec);
+qp_vec = (q(1, 1) * p_vec) + (p(1, 1) * q_vec) + (cross(q_vec, p_vec));
 
-%Construct resulting quaternion
-Result_q_v_conjQ = [qp0; qpvec(1:3, 1)];
-%Normalize result to avoid extreme long vectors
-Result_q_v_conjQ = Result_q_v_conjQ / norm(Result_q_v_conjQ);
+%Result
+R = [qp_0; qp_vec(1:3, 1)];
+R = R / norm(R); %Normalize
 
-%Axis plot in 3D
+%Plot
 plot3([origin(1) p1(1)],[origin(2) p1(2)],[origin(3) p1(3)],'LineWidth',3);
 hold on;
-%Axis plot in 3D
 plot3([origin(1) p2(1)],[origin(2) p2(2)],[origin(3) p2(3)],'LineWidth',3);
 plot3([origin(1) p3(1)],[origin(2) p3(2)],[origin(3) p3(3)],'LineWidth',3);
-%Plot the resulting vector
-plot3([origin(1) Result_q_v_conjQ(2)],[origin(2) Result_q_v_conjQ(3)],[origin(3) Result_q_v_conjQ(4)], 'LineWidth', 3);
-%Keep plot aspect ratio fixed at 1 1 1
+plot3([origin(1) R(2)],[origin(2) R(3)],[origin(3) R(4)], 'LineWidth', 3);
 daspect([1 1 1]);
-%Move plot camera to 1 2 1
+
+%Camera to 1 2 1 coz orientation
 set(gca,'CameraPosition',[1 2 1]);
-%Remove plot background and axis
+
+%details
 set(gca, 'visible', 'off');
 
 hold off;
