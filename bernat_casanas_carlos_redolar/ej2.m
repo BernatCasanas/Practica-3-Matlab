@@ -1,35 +1,35 @@
-function varargout = untitled2(varargin)
-% UNTITLED2 MATLAB code for untitled2.fig
-%      UNTITLED2, by itself, creates a new UNTITLED2 or raises the existing
+function varargout = ej2(varargin)
+% EJ2 MATLAB code for ej2.fig
+%      EJ2, by itself, creates a new EJ2 or raises the existing
 %      singleton*.
 %
-%      H = UNTITLED2 returns the handle to a new UNTITLED2 or the handle to
+%      H = EJ2 returns the handle to a new EJ2 or the handle to
 %      the existing singleton*.
 %
-%      UNTITLED2('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in UNTITLED2.M with the given input arguments.
+%      EJ2('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in EJ2.M with the given input arguments.
 %
-%      UNTITLED2('Property','Value',...) creates a new UNTITLED2 or raises the
+%      EJ2('Property','Value',...) creates a new EJ2 or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before untitled2_OpeningFcn gets called.  An
+%      applied to the GUI before ej2_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to untitled2_OpeningFcn via varargin.
+%      stop.  All inputs are passed to ej2_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help untitled2
+% Edit the above text to modify the response to help ej2
 
-% Last Modified by GUIDE v2.5 08-Dec-2019 13:28:40
+% Last Modified by GUIDE v2.5 08-Dec-2019 18:09:59
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @untitled2_OpeningFcn, ...
-                   'gui_OutputFcn',  @untitled2_OutputFcn, ...
+                   'gui_OpeningFcn', @ej2_OpeningFcn, ...
+                   'gui_OutputFcn',  @ej2_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,26 +44,26 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before untitled2 is made visible.
-function untitled2_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before ej2 is made visible.
+function ej2_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to untitled2 (see VARARGIN)
+% varargin   command line arguments to ej2 (see VARARGIN)
 
-% Choose default command line output for untitled2
+% Choose default command line output for ej2
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes untitled2 wait for user response (see UIRESUME)
+% UIWAIT makes ej2 wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = untitled2_OutputFcn(hObject, eventdata, handles) 
+function varargout = ej2_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -71,6 +71,29 @@ function varargout = untitled2_OutputFcn(hObject, eventdata, handles)
 
 % Get default command line output from handles structure
 varargout{1} = handles.output;
+
+
+% --- Executes on slider movement.
+function slider1_Callback(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+speed = get(handles.slider1, 'Value');
+set(handles.text11,'String',num2str(speed));
+
+% --- Executes during object creation, after setting all properties.
+function slider1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
 
 
 
@@ -120,30 +143,6 @@ end
 
 
 % --- Executes on slider movement.
-function slider1_Callback(hObject, eventdata, handles)
-% hObject    handle to slider1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'Value') returns position of slider
-%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
-speed = get(handles.slider1, 'Value');
-set(handles.text11,'String',num2str(speed));
-
-
-% --- Executes during object creation, after setting all properties.
-function slider1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-
-
-% --- Executes on slider movement.
 function slider2_Callback(hObject, eventdata, handles)
 % hObject    handle to slider2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -153,7 +152,6 @@ function slider2_Callback(hObject, eventdata, handles)
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 angle = get(handles.slider2, 'Value');
 set(handles.text12,'String',num2str(angle));
-
 
 % --- Executes during object creation, after setting all properties.
 function slider2_CreateFcn(hObject, eventdata, handles)
