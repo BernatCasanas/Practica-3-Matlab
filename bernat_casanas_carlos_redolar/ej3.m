@@ -79,9 +79,9 @@ function slider3_Callback(hObject, eventdata, handles)
 % hObject    handle to slider3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-set(handles.angle, 'String', num2str(get(hObject, 'Value')));
+
 a = str2double(get(handles.angle, 'String'));
-ex3(hObject, eventdata, handles, a);
+calculate(hObject, eventdata, handles, a);
 
 
 % Hints: get(hObject,'Value') returns position of slider
@@ -237,7 +237,7 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
-function ex3(hObject, eventdata, handles,a)
+function calculate(hObject, eventdata, handles,a)
 
 angle= a;
 
@@ -254,7 +254,6 @@ u_norm = u/norm(u);
 
 u_quaternion = [cosd(angle/ 2); sind(angle / 2) * u_norm];
 conj_quaternion = [u_quaternion(1); -u_quaternion(2:4)];
-
 
 v_quaternion = [0;v];
 
@@ -286,11 +285,10 @@ plot3([origin(1) p2(1)],[origin(2) p2(2)],[origin(3) p2(3)],'LineWidth',3);
 plot3([origin(1) p3(1)],[origin(2) p3(2)],[origin(3) p3(3)],'LineWidth',3);
 plot3([origin(1) R(2)],[origin(2) R(3)],[origin(3) R(4)], 'LineWidth', 3);
 daspect([1 1 1]);
-
-%Camera to 1 2 1 coz orientation
-set(gca,'CameraPosition',[1 2 1]);
-
 %details
+set(gca,'CameraPosition',[1 2 1]);
+set(gca, 'box', 'off');
 set(gca, 'visible', 'off');
 
 hold off;
+
