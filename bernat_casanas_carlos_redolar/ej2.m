@@ -82,7 +82,7 @@ function slider1_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 speed = get(handles.slider1, 'Value');
-set(handles.text11,'String',num2str(speed));
+set(handles.text7,'String',num2str(speed));
 
 % --- Executes during object creation, after setting all properties.
 function slider1_CreateFcn(hObject, eventdata, handles)
@@ -151,7 +151,7 @@ function slider2_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 angle = get(handles.slider2, 'Value');
-set(handles.text12,'String',num2str(angle));
+set(handles.text8,'String',num2str(angle));
 
 % --- Executes during object creation, after setting all properties.
 function slider2_CreateFcn(hObject, eventdata, handles)
@@ -180,8 +180,8 @@ x_max = x0 + (v0*v0*sind(2*a0))/g;
 y_max = y0 + (v0*v0*sind(a0)*sind(a0))/(2*g);
 
 
-set(handles.text9,'String',num2str(x_max));
-set(handles.text10,'String',num2str(y_max));
+set(handles.text11,'String',num2str(x_max));
+set(handles.text12,'String',num2str(y_max));
 
 t_max = (2*v0*sind(a0))/g;
 t = 0:t_max/20:t_max; 
