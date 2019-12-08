@@ -79,7 +79,7 @@ function slider3_Callback(hObject, eventdata, handles)
 % hObject    handle to slider3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+set(handles.angle, 'String', num2str(get(hObject, 'Value')));
 a = str2double(get(handles.angle, 'String'));
 calculate(hObject, eventdata, handles, a);
 
